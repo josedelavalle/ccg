@@ -1,35 +1,37 @@
-﻿<div ng-if="showcard==3" class="card-section" ng-class="{'padding-0': isMobile}">
+﻿<div ng-if="showcard==3" class="card-section location">
     <div class="sticky-section" ng-class="{'position-relative': !sticky}">
-        <ng-map id="big-map" map-initialized="onMapLoaded()" class="map" ng-class="{'small-map': isMobile}" center="43.833851, -74.871826" zoom-to-include-markers="auto">
-            <marker ng-repeat="item in locations" 
-                    ng-if="item.Coordinates && showMarkers" 
-                    position="[{{item.Coordinates[0]}},{{item.Coordinates[1]}}]" 
-                    on-click="showDetail(item)"
-                    class="ng-scope" id="marker{{$index}}">
-            </marker>
-            <info-window id="map-iw">
-                <div class="map-iw" ng-non-bindable="">
-                    <h4>{{vm.selectedEvent.Name}}</h4>
-                    <div>{{vm.selectedEvent.StreetAddress}}</div>
-                    <div>
-                        <span>{{vm.selectedEvent.City}}</span>,&nbsp;
-                        <span>{{vm.selectedEvent.State}}</span>&nbsp;
-                        <span>{{vm.selectedEvent.Zip}}</span>
+        <div class="map-container">
+            <ng-map id="big-map" map-initialized="onMapLoaded()" class="map" center="43.833851, -74.871826" zoom-to-include-markers="auto">
+                <marker ng-repeat="item in locations"
+                        ng-if="item.Coordinates && showMarkers"
+                        position="[{{item.Coordinates[0]}},{{item.Coordinates[1]}}]"
+                        on-click="showDetail(item)"
+                        class="ng-scope" id="marker{{$index}}">
+                </marker>
+                <info-window id="map-iw">
+                    <div class="map-iw" ng-non-bindable="">
+                        <h4>{{vm.selectedEvent.Name}}</h4>
+                        <div>{{vm.selectedEvent.StreetAddress}}</div>
+                        <div>
+                            <span>{{vm.selectedEvent.City}}</span>,&nbsp;
+                            <span>{{vm.selectedEvent.State}}</span>&nbsp;
+                            <span>{{vm.selectedEvent.Zip}}</span>
+                        </div>
+                        <hr class="margin-top-5 margin-bottom-5" />
+                        <div>
+                            Coordinates:
+                            <small>{{vm.selectedEvent.Coordinates[0]}}</small>,&nbsp;
+                            <small>{{vm.selectedEvent.Coordinates[1]}}</small>
+                        </div>
                     </div>
-                    <hr class="margin-top-5 margin-bottom-5"/>
-                    <div>
-                        Coordinates:
-                        <small>{{vm.selectedEvent.Coordinates[0]}}</small>,&nbsp;
-                        <small>{{vm.selectedEvent.Coordinates[1]}}</small>
-                    </div>
-                </div>
-            </info-window>
-        </ng-map>
+                </info-window>
+            </ng-map>
+        </div>
         <md-button class="sticky-toggle margin-0 md-raised md-button md-ink-ripple" ng-class="{'sticky-off': !sticky}" aria-label="Fixed Controls" ng-init="sticky=false" ng-click="sticky=!sticky">
             <div class="fa fa-2x fa-thumb-tack"></div>
         </md-button>
     </div>
-    <div class="row cards">
+    <div class="row cards location">
         <div class="col-xs-12 col-sm-6" ng-repeat="item in locations">
             <locations-card itemid="item"></locations-card>
         </div>

@@ -133,9 +133,9 @@ md-input-container label, md-select span {
         font-size: 16px;
     }
     h1 {
-        font-size: 1.5em;
+        font-size: 1.1em;
         text-align: center;
-        padding-top: 10px;
+        padding-top: 20px;
     }
     .codeavail {
         font-size: 1em;
@@ -144,14 +144,30 @@ md-input-container label, md-select span {
         margin-right: 0px;
         margin-left: 0px;
     }
-    .col-xs-12 {
+    /*.col-xs-12 {
         padding-left: 0px;
         padding-right: 0px;
-    }
+    }*/
     .info-section {
         max-width: 90vw;
         p, li {
             font-size: 0.8em;
+        }
+    }
+    .location {
+        .col-xs-12 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .list-card-title {
+            padding-left: 10px;
+        }
+
+        .list-card-heading {
+            .fa {
+                padding-right: 10px;
+            }
         }
     }
 }
@@ -358,9 +374,13 @@ pre {
         margin-left: -15px;
     }
 }
+.map-container {
+    width: 100%;
+}
 .map {
     padding-bottom: 20px;
     height: 400px;
+    width: auto;
 }
 .small-map {
     height: 350px !important;
