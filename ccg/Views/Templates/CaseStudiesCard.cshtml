@@ -1,0 +1,19 @@
+﻿<div class="list-card-container">
+    <div class="list-card pointer-hover" ng-click="goToUrl(item.Link)" ng-class="{'margin-left-0 margin-right-0': $parent.isMobile}">
+        <div class="list-card-heading col-xs-12">
+            <span class="list-card-title">{{item.Title}}</span>
+        </div>
+        <div class="col-xs-12 list-card-image">
+            <div ng-if="item.Image" class="cardImage" style="background-image: url('{{item.Image}}')"></div>
+            <div ng-if="!item.Image" class="cardImage" style="background-image: url('/Content/images/CCG-Logo.png');background-size:contain;"></div>
+            <div class="col-xs-12 list-card-date">
+                <span>{{item.Category}}</span>
+            </div>
+        </div>
+        <div class="col-xs-12 list-card-info">
+            <div>{{item.Description}}</div>
+        </div>
+        
+    </div>
+</div>
+

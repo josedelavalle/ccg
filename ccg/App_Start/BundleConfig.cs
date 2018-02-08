@@ -25,7 +25,27 @@ namespace ccg
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/fa/font-awesome.min.css",
+                      "~/Content/site.css",
+                      "~/Content/slick.css",
+                      "~/Content/slick-theme.css",
+                      "~/Content/loading-bar.css",
+                      "~/Content/angular-material.min.css",
+                      "~/Content/main.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                "~/Scripts/vendor/angular.min.js",
+                "~/Scripts/vendor/angular-aria.min.js",
+                "~/Scripts/vendor/angular-animate.min.js",
+                "~/Scripts/vendor/angular-messages.min.js",
+                "~/Scripts/vendor/angular-filter.min.js",
+                "~/Scripts/vendor/angular-material.min.js",
+                "~/Scripts/vendor/ng-map.min.js",
+                "~/Scripts/vendor/ng-google-chart.min.js",
+                "~/Scripts/vendor/loading-bar.js",
+                "~/Scripts/vendor/slick.min.js",
+                "~/Scripts/vendor/angular-slick.min.js",
+                "~/Scripts/app.js"));
         }
     }
 }

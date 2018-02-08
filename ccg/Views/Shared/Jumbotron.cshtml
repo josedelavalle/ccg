@@ -1,0 +1,71 @@
+﻿<div class="jumbotron margin-bottom-10" ng-class="{'no-background': !showJumbotron}" ng-init="showsection=0;showJumbotron=true" ng-show="showJumbotron">
+
+    <div>
+        <i class="fa fa-times pointer-hover pull-right" ng-click="showJumbotron=false"></i>
+        <div ng-if="showsection==0">
+
+            <img width="200" src="~/Content/images/CCG-Logo.png" alt="CCG Marketing Solutions" />
+
+            <div class="appdescription">
+                <p>
+                    &bull;
+                    This is a .NET MVC web app created by me that programatically consumes data from home.corpcomm.com with an AngularJs responsive frontend created soley to
+                    show initiative, desire, and capability, in the hopes of gaining employment with CCG Marketing Solutions,
+                    and should not be interpretted as representative of CCG Marketing Solutions
+                    or any of their affiliates.
+                </p>
+                <p>
+                    &bull;
+                    Output Cache on back-end methods set to 24 hours to minimize their web server load.
+                </p>
+            </div>
+        </div>
+        <div ng-show="showsection==3" class="display-flex">
+            <span ng-click="showsection=0">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            <h1 class="margin-top-0">Data/GetLocations</h1>
+            <pre>{{locationsPretty}}</pre>
+        </div>
+        <div ng-show="showsection==1" class="display-flex">
+            <span ng-click="showsection=0">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            <h1 class="margin-top-0">Data/GetNews</h1>
+            <pre>{{newsPretty}}</pre>
+        </div>
+        <div ng-show="showsection==2" class="display-flex">
+            <span ng-click="showsection=0">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            <h1 class="margin-top-0">Data/GetCaseStudies</h1>
+            <pre>{{caseStudiesPretty}}</pre>
+        </div>
+        
+        <div class="row text-center">
+            <div class="col-xs-12 col-md-4">
+                <md-button class="full-width margin-0 md-raised md-button md-ink-ripple" ng-click="showsection=3;showcard=3;currentNavItem='page3'">
+                    Show Get Locations Response
+                </md-button>
+            </div>
+
+            <div class="col-xs-12 col-md-4">
+                <md-button class="full-width margin-0 md-raised md-button md-ink-ripple" ng-click="showsection=1;showcard=1;currentNavItem='page1'">
+                    Show Get News Response
+                </md-button>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <md-button class="full-width margin-0 md-raised md-button md-ink-ripple" ng-click="showsection=2;showcard=2;currentNavItem='page2'">
+                    Show Get Case Studies Response
+                </md-button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <md-button class="full-width margin-0 md-raised md-button md-ink-ripple" aria-label="Scroll To Content" ng-click="scrollTo('#content')">
+                    <span class="fa fa-chevron-down"></span>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

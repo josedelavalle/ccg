@@ -1,0 +1,64 @@
+﻿<div ng-if="showcard==3" class="card-section" ng-class="{'padding-0': isMobile}">
+    <div class="sticky-section" ng-class="{'position-relative': !sticky}">
+        <ng-map id="big-map" map-initialized="onMapLoaded()" class="map" ng-class="{'small-map': isMobile}" center="43.833851, -74.871826" zoom-to-include-markers="auto">
+            <marker ng-repeat="item in locations" 
+                    ng-if="item.Coordinates && showMarkers" 
+                    position="[{{item.Coordinates[0]}},{{item.Coordinates[1]}}]" 
+                    on-click="showDetail(item)"
+                    class="ng-scope" id="marker{{$index}}">
+            </marker>
+            <info-window id="map-iw">
+                <div class="map-iw" ng-non-bindable="">
+                    <h4>{{vm.selectedEvent.Name}}</h4>
+                    <div>{{vm.selectedEvent.StreetAddress}}</div>
+                    <div>
+                        <span>{{vm.selectedEvent.City}}</span>,&nbsp;
+                        <span>{{vm.selectedEvent.State}}</span>&nbsp;
+                        <span>{{vm.selectedEvent.Zip}}</span>
+                    </div>
+                    <hr class="margin-top-5 margin-bottom-5"/>
+                    <div>
+                        Coordinates:
+                        <small>{{vm.selectedEvent.Coordinates[0]}}</small>,&nbsp;
+                        <small>{{vm.selectedEvent.Coordinates[1]}}</small>
+                    </div>
+                </div>
+            </info-window>
+        </ng-map>
+        <md-button class="sticky-toggle margin-0 md-raised md-button md-ink-ripple" ng-class="{'sticky-off': !sticky}" aria-label="Fixed Controls" ng-init="sticky=false" ng-click="sticky=!sticky">
+            <div class="fa fa-2x fa-thumb-tack"></div>
+        </md-button>
+    </div>
+    <div class="row cards">
+        <div class="col-xs-12 col-sm-6" ng-repeat="item in locations">
+            <locations-card itemid="item"></locations-card>
+        </div>
+    </div>
+    
+
+    <div class="info-section">
+        <h2><strong>Secure Warehousing</strong></h2>
+        <p>CCG’s state of the art facilities includes Technology, Client Service, Fulfillment, Warehousing, and Shipping. We have 500,000 square feet, with more than 20,000 pallet, bin, and flow rack locations including:</p>
+        <ul>
+            <li>ISO 8, Class 100,000 Clean Room</li>
+            <li>Quarantine and Return area</li>
+            <li>DEA Cage</li>
+            <li>Cold Chain Storage</li>
+            <li>Pharmaceutical Sample and Literature fulfillment</li>
+            <li>AIB Certified</li>
+        </ul>
+        <p>CCG’s warehouses are pharma compliant facilities, meaning we distribute pharmaceutical samples and are held to very high warehousing standards. We maintain clean, organized, secure, and temperature controlled warehouses. Our West Caldwell location was formerly a Novartis drug distribution facility and our Towaco location was formerly Astra Zeneca’s drug sample distribution facility.</p>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <slick ng-if="isMobile" slides-to-show="2" autoplay="true" speed="900">
+                <div ng-repeat="i in [1,2,3,4]" class="slick-bg" style="background-image: url('/Content/images/warehousing{{i}}.png')">
+                </div>
+            </slick>
+            <slick ng-if="!isMobile" slides-to-show="3" autoplay="true" speed="900">
+                <div ng-repeat="i in [1,2,3,4]" class="slick-bg" style="background-image: url('/Content/images/warehousing{{i}}.png')">
+                </div>
+            </slick>
+        </div>
+    </div>
+</div>

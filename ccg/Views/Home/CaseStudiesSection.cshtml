@@ -1,0 +1,51 @@
+﻿<div ng-if="showcard==2" class="card-section" ng-class="{'padding-0': isMobile}">
+    <div class="sticky-section" ng-class="{'position-relative': !sticky}">
+        <div google-chart ng-if="myCaseStudyChartObject.data.rows.length > 0" chart="myCaseStudyChartObject" style="height:{{chartHeight}}; width:100%;"></div>
+        <div class="row filter-controls">
+            <div class="col-xs-12 col-md-4">
+                <md-input-container class="md-block">
+                    <label>Filter case studies</label>
+                    <input ng-model="caseStudyNameFilter">
+                </md-input-container>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <md-select ng-model="topicCategoryFilter" ng-change="catSelectionChanged()" placeholder="Category" multiple>
+                    <md-optgroup label="Case Study Categories">
+                        <md-option value="All">All</md-option>
+                        <md-option ng-repeat="cat in caseStudiesCategories track by $index" value="{{cat}}">{{cat}}</md-option>
+                    </md-optgroup>
+                </md-select>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <md-select ng-model="caseStudiesSortBy" placeholder="Sort Items">
+                    <md-optgroup label="Sort Case Studies">
+                        <md-option value="Title">Title Ascending</md-option>
+                        <md-option value="-Title">Title Decending</md-option>
+                        <md-option value="Category">Category Ascending</md-option>
+                        <md-option value="-Category">Category Decending</md-option>
+                        <md-option value="Description">Description Ascending</md-option>
+                        <md-option value="-Description">Description Decending</md-option>
+                    </md-optgroup>
+                </md-select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" ng-if="!searching && !showing && caseStudyNameFilter">
+                <h1 class="text-center">No Records Found when filtering by {{caseStudyNameFilter}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4 margin-top-10" ng-show="showing != null">
+                <label>Showing {{showing}} of {{caseStudies.length}}</label>
+            </div>
+        </div>
+        <md-button class="sticky-toggle margin-0 md-raised md-button md-ink-ripple" ng-class="{'sticky-off': !sticky}" aria-label="Fixed Controls" ng-init="sticky=true" ng-click="sticky=!sticky">
+            <div class="fa fa-2x fa-thumb-tack"></div>
+        </md-button>
+    </div>
+    <div class="row cards">
+        <div class="col-xs-12 col-sm-6 col-md-4" ng-class="{'padding-0':isMobile}" ng-repeat="item in filterCaseStudy(caseStudyNameFilter, topicCategoryFilter) | orderBy: caseStudiesSortBy">
+            <case-studies-card itemid="item"></case-studies-card>
+        </div>
+    </div>
+</div>

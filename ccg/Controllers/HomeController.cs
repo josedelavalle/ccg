@@ -10,19 +10,21 @@ namespace ccg.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Jose DeLavalle - CCG";
+
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "CCG Interview App";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "CCG Interview App";
 
             return View();
         }

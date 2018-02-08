@@ -1,0 +1,31 @@
+﻿<div class="list-card-container" ng-init="item.viewId=1">
+    <div class="list-card pointer-hover" ng-class="{'margin-left-0 margin-right-0': $parent.isMobile}">
+        <div class="list-card-heading col-xs-12">
+            <span class="list-card-title">{{item.Name}}</span>
+            <span class="pull-right">
+                <i class="fa fa-map fa-2x" ng-if="item.viewId==1" ng-click="item.viewId=2"></i>
+                <i class="fa fa-camera fa-2x" ng-if="item.viewId==2" ng-click="item.viewId=1"></i>
+            </span>
+        </div>
+        <div class="col-xs-12 list-card-image location">
+            <div class="cardImage" ng-show="item.viewId==1" style="background-image: url('{{item.Image}}')"></div>
+            @*<div class="cardImage" ng-if="item.viewId==2" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center={{item.Coordinates[0]}},{{item.Coordinates[1]}}&zoom=13&size=400x400&key=AIzaSyBy34i8mK7IXxcAqmZfOEX70XZtNEt7D7s')"></div>*@
+            <ng-map class="small-map" center="{{item.Coordinates[0]}},{{item.Coordinates[1]}}"></ng-map>
+            <div class="col-xs-12 list-card-date">
+                <small>
+                    Latitude: {{item.Coordinates[0]}} &nbsp;&nbsp;-&nbsp;&nbsp; Longitude: {{item.Coordinates[1]}}
+                </small>
+            </div>
+        </div>
+        <div class="col-xs-12 list-card-info">
+            <h5 class="text-center">
+                <span>{{item.StreetAddress}}</span>
+                <span>{{item.City}}</span>
+                <span>{{item.State}}</span>
+                <span>{{item.Zip}}</span>
+            </h5>
+        </div>
+        
+    </div>
+</div>
+
